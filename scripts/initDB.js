@@ -16,8 +16,8 @@ async function initDB() {
   await User.sync({force: true});
   await GroupUser.sync({force: true});
 
-  await Moment.sync({force: true});
   await Article.sync({force: true});
+  await Moment.sync({force: true});
   await Comment.sync({force: true});
   await Song.sync({force: true});
   
