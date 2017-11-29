@@ -12,19 +12,22 @@ class UserDao extends BaseDao {
 
   async getListByName(name) {
     const users = await this.list({
-      [Op.or]: [
-        {
-          firstName: {
-            [Op.like]: `%${name}%`,
-          },
-        }, {
-          lastName: {
-            [Op.like]: `%${name}%`,
-          },
-        }
-      ],
+      username: {
+        [Op.like]: `%${name}%`,
+      }
     });
     return users;
+  }
+
+  async getByUsername(name) {
+    const user = await User.findOne({
+      where: {
+        username: {
+          [Op.eq]: name,
+        }
+      },
+    });
+    return user;
   }
 }
 
