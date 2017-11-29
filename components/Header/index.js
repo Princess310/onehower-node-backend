@@ -13,6 +13,11 @@ export default () => (
           <a>About</a>
         </Link>
       </li>
+      <li>
+        <Link href="/register">
+          <a>Register</a>
+        </Link>
+      </li>
     </ul>
 
     <style jsx>{`

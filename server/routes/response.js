@@ -5,12 +5,16 @@ class Response {
     this.code = code;
   }
 
-  success(result = {}) {
+  successResult(result = {}) {
     return this.setSuccess(true).setCode(200).setResult(result);
   }
 
   fail(err) {
-    return this.setSuccess(false).setCode(604).setResult(err);
+    const { name, message } = err;
+    return this.setSuccess(false).setCode(604).setResult({
+      name,
+      message,
+    });
   }
 
   // Accessors
