@@ -22,7 +22,7 @@ class UserSevice {
     }
 
     const newUser = await userDao.create({
-      username,
+      name: username,
       password: encryptPwd,
     });
 
@@ -33,7 +33,7 @@ class UserSevice {
     const passwordService = new PasswordSevice();
     const user = await userDao.getByUsername(username);
 
-    if (!passwordService.check(password, user.password)) {
+    if (!user || !passwordService.check(password, user.password)) {
       throw Error(WRONG_CREDENTIAL);
     }
 
